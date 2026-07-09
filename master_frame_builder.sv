@@ -1,3 +1,5 @@
+import modbus_crc_pkg::*;
+
 module master_frame_builder (
     input  logic        clk,
     input  logic        rst_n,
@@ -17,24 +19,6 @@ module master_frame_builder (
     logic [15:0] crc;
     integer crc_index;
     integer reset_index;
-
-    function automatic logic [15:0] crc16_update(
-        input logic [15:0] crc_in,
-        input logic [7:0] data
-    );
-        logic [15:0] next_crc;
-        integer bit_index;
-        begin
-            next_crc = crc_in ^ data;
-            for (bit_index = 0; bit_index < 8; bit_index++) begin
-                if (next_crc[0])
-                    next_crc = (next_crc >> 1) ^ 16'hA001;
-                else
-                    next_crc = next_crc >> 1;
-            end
-            return next_crc;
-        end
-    endfunction
 
     always_comb begin
         crc = 16'hFFFF;

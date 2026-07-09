@@ -4,11 +4,17 @@
 
 Este documento explica, de forma didática e com linguagem adequada para apresentação acadêmica, o funcionamento do mestre Modbus RTU desenvolvido em SystemVerilog. O objetivo é permitir que o código seja compreendido, apresentado e defendido diante de colegas, professores e avaliadores.
 
-O conjunto desenvolvido é formado por três arquivos principais:
+O conjunto desenvolvido é formado por arquivos de implementação, verificação e documentação:
 
+- `modbus_defs_pkg.sv`: pacote com códigos de função, limite de leitura e enum de status.
+- `modbus_crc_pkg.sv`: pacote compartilhado com a função de cálculo do CRC Modbus RTU.
 - `master_frame_builder.sv`: responsável por montar o quadro de requisição Modbus RTU.
 - `modbus_master_fsm.sv`: responsável por controlar a máquina de estados do mestre.
 - `tb_modbus_master_fsm.sv`: responsável por verificar o funcionamento do mestre por meio de simulação.
+- `README_MESTRE_MODBUS_RTU.md`: guia técnico curto para compilação, integração e entrega.
+- `TABELA_VERIFICACAO_MESTRE_MODBUS_RTU.md`: tabela de cenários de teste para uso no relatório.
+- `ROTEIRO_APRESENTACAO_MESTRE_MODBUS_RTU.md`: roteiro curto para apresentação oral.
+- `TRECHO_RELATORIO_MESTRE_MODBUS_RTU.md`: texto acadêmico pronto para metodologia e verificação.
 
 Em uma rede Modbus RTU, o mestre é o dispositivo que inicia a comunicação. Ele envia uma requisição para um escravo específico, aguarda a resposta, verifica se a resposta está correta e então informa o resultado da transação. No projeto desenvolvido, esse comportamento foi modelado em hardware, usando lógica sequencial, sinais de controle e máquina de estados finitos.
 
@@ -416,11 +422,11 @@ O testbench atual cobre cinco situações principais:
 
 Esses testes estão alinhados com requisitos essenciais de um mestre Modbus RTU: enviar requisições, receber respostas válidas, identificar exceções, detectar erro de integridade e encerrar a transação por timeout.
 
-## 6. O que ainda pode evoluir
+## 6. Melhorias implementadas para a entrega final
 
-O código atual já recebeu algumas evoluções em relação à primeira versão. As principais melhorias implementadas foram a exposição de múltiplos registradores lidos pela função `03`, o tratamento explícito de overflow de resposta, a sinalização de função não suportada e a ampliação do testbench.
+O código atual já recebeu evoluções importantes em relação à primeira versão. As principais melhorias implementadas foram a exposição sistêmica de múltiplos registradores lidos pela função `03`, o tratamento explícito de overflow com descarte controlado dos bytes excedentes, a validação antecipada de parâmetros, a sinalização de função não suportada, a reutilização da lógica de CRC por meio de pacote SystemVerilog e a ampliação do testbench.
 
-### 6.1 Evoluções implementadas
+### 6.1 Interface sistêmica para múltiplos registradores
 
 A interface do módulo `modbus_master_fsm` passou a expor dois sinais adicionais para respostas da função `03`:
 
@@ -431,44 +437,67 @@ output logic [15:0] response_registers [0:MAX_READ_REGISTERS-1]
 
 O sinal `response_register_count` informa quantos registradores foram lidos com sucesso. O vetor `response_registers` armazena os valores dos registradores retornados pelo escravo. Com isso, a saída `response_data` continua disponível para compatibilidade, contendo o primeiro registrador lido, mas a resposta completa também pode ser acessada pelo novo vetor.
 
-Também foram adicionados dois novos status:
+Além do vetor, foi adicionada uma interface de leitura por índice, semelhante a uma memória simples:
+
+```systemverilog
+input  logic [7:0]  response_register_read_index,
+output logic [15:0] response_register_read_data,
+output logic        response_register_read_valid
+```
+
+Com essa interface, outro módulo não precisa acessar diretamente todo o vetor. Ele informa o índice desejado em `response_register_read_index` e recebe o valor correspondente em `response_register_read_data`. O sinal `response_register_read_valid` indica se aquele índice realmente existe na resposta atual. Essa escolha se aproxima de uma pequena memória mapeada e facilita a integração com outros blocos do sistema.
+
+### 6.2 Status de erro e validação antecipada
+
+Também foram adicionados novos status:
 
 | Status | Significado |
 |---:|---|
 | `STATUS_OVERFLOW` | A resposta ultrapassou o limite configurado de bytes ou registradores |
 | `STATUS_UNSUPPORTED` | O comando solicitado usa uma função não suportada pelo mestre |
+| `STATUS_INVALID_PARAM` | O comando possui parâmetro inválido, como leitura FC03 com quantidade zero ou acima do limite |
 
-O testbench foi ampliado para cobrir casos adicionais, como leitura de múltiplos registradores, `tx_ready` intermitente, endereço de escravo incorreto, função de resposta incorreta, quadro curto, byte count inválido, resposta longa demais e comando com função não suportada.
+A função e os parâmetros principais são validados antes do envio. Para a função `03`, o mestre rejeita quantidade igual a zero, quantidade acima de 125 registradores, que é o limite usual do Modbus para leitura de Holding Registers, e quantidade acima de `MAX_READ_REGISTERS`, que é o limite local configurado no módulo. Quando isso ocorre, o mestre não transmite quadro e retorna `STATUS_INVALID_PARAM`.
 
-### 6.2 Próximas evoluções possíveis
+### 6.3 Tratamento de overflow com recuperação
 
-Mesmo com essas melhorias, ainda existem pontos que podem ser refinados em uma etapa futura.
+O overflow é detectado por `STATUS_OVERFLOW`. Quando a resposta excede `MAX_RESPONSE_BYTES`, os bytes adicionais deixam de ser armazenados, mas continuam sendo descartados até o fim do quadro. O sinal `overflow_byte_count` registra quantos bytes excedentes foram recebidos naquela transação. Assim, além de detectar o erro, o mestre se recupera de forma controlada e consegue voltar para `S_IDLE` após `rx_frame_end`.
 
-### 6.3 Melhor exposição sistêmica de múltiplos registradores na função `03`
+### 6.4 Ampliação da verificação
 
-Agora a FSM já disponibiliza os registradores lidos em `response_registers`. Em uma integração maior, seria possível transformar esse vetor em uma interface de streaming, FIFO ou memória mapeada, facilitando o consumo dos dados por outros módulos.
+O testbench foi ampliado para cobrir casos nominais e casos de falha. Os cenários implementados incluem:
 
-### 6.4 Tratamento de overflow com recuperação
-
-O overflow já é detectado por `STATUS_OVERFLOW`. Em uma versão mais robusta, o mestre poderia também descartar automaticamente os bytes restantes até detectar o fim do quadro e registrar métricas de erro.
-
-### 6.5 Validação antecipada de parâmetros
-
-A função já é validada antes do envio. Uma evolução futura seria validar também limites de quantidade na função `03`, como quantidade igual a zero ou superior ao máximo permitido pelo protocolo.
-
-### 6.6 Testes adicionais
-
-Alguns testes recomendados para uma etapa ainda mais completa são:
-
-- variações de timeout durante recepção parcial;
+- leitura de múltiplos registradores;
+- leitura sistêmica por índice usando `response_register_read_index`;
+- `tx_ready` intermitente durante transmissão;
+- endereço de escravo incorreto;
+- função de resposta incorreta;
+- quadro curto;
+- byte count inválido;
+- resposta longa demais;
+- comando com função não suportada;
+- timeout durante recepção parcial;
 - comando FC03 com quantidade zero;
 - comando FC03 com quantidade acima do limite do protocolo;
-- resposta de exceção com código desconhecido;
-- integração com UART real ou barramento interno compartilhado.
+- resposta de exceção com código pouco comum;
+- contagem de bytes descartados em caso de overflow.
 
-### 6.7 Reutilização da lógica de CRC
+Esses cenários demonstram que o mestre trata tanto o caminho esperado da comunicação quanto situações de erro relevantes para uma rede Modbus RTU simulada.
 
-A função `crc16_update` aparece em mais de um arquivo. Uma evolução arquitetural seria isolar essa lógica em um pacote SystemVerilog ou módulo comum. Isso reduz duplicação e facilita manutenção.
+### 6.5 Reutilização da lógica de CRC
+
+A função `crc16_update` foi isolada no pacote `modbus_crc_pkg.sv`. Com isso, `master_frame_builder.sv`, `modbus_master_fsm.sv` e `tb_modbus_master_fsm.sv` passam a reutilizar a mesma implementação de CRC. Essa mudança reduz duplicação, diminui risco de divergência entre cálculo de requisição, validação de resposta e testbench, e deixa a arquitetura mais limpa para manutenção.
+
+### 6.6 Pacote de definições e material de entrega
+
+As constantes do protocolo e os códigos de status foram isolados em `modbus_defs_pkg.sv`. Esse pacote contém os códigos das funções Modbus suportadas, o limite máximo de leitura e o tipo enumerado `modbus_status_t`. Na prática, isso evita espalhar números fixos pelo código e melhora a clareza da implementação.
+
+Também foram adicionados dois documentos auxiliares:
+
+- `README_MESTRE_MODBUS_RTU.md`, com ordem de compilação, funções suportadas, status, interface de leitura e limitações.
+- `TABELA_VERIFICACAO_MESTRE_MODBUS_RTU.md`, com os cenários testados e os resultados esperados, pronta para ser usada na seção de verificação do relatório.
+- `ROTEIRO_APRESENTACAO_MESTRE_MODBUS_RTU.md`, com uma fala de 2 a 3 minutos e respostas para perguntas prováveis.
+- `TRECHO_RELATORIO_MESTRE_MODBUS_RTU.md`, com texto acadêmico para a parte prática, metodologia e resultados de verificação.
 
 ## 7. Roteiro curto para apresentação
 

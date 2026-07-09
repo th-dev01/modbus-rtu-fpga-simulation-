@@ -1,6 +1,7 @@
 module modbus_master_fsm #(
     parameter int unsigned TIMEOUT_CYCLES = 1000,
-    parameter int unsigned MAX_RESPONSE_BYTES = 256
+    parameter int unsigned MAX_RESPONSE_BYTES = 256,
+    parameter int unsigned MAX_READ_REGISTERS = 125
 ) (
     input  logic        clk,
     input  logic        rst_n,
@@ -26,7 +27,9 @@ module modbus_master_fsm #(
     output logic [2:0]  response_status,
     output logic [7:0]  response_exception,
     output logic [15:0] response_data,
-    output logic [7:0]  response_byte_count
+    output logic [7:0]  response_byte_count,
+    output logic [7:0]  response_register_count,
+    output logic [15:0] response_registers [0:MAX_READ_REGISTERS-1]
 );
 
     localparam logic [7:0] FC_READ_HOLDING = 8'h03;
@@ -37,6 +40,8 @@ module modbus_master_fsm #(
     localparam logic [2:0] STATUS_CRC_ERROR= 3'd2;
     localparam logic [2:0] STATUS_TIMEOUT  = 3'd3;
     localparam logic [2:0] STATUS_INVALID  = 3'd4;
+    localparam logic [2:0] STATUS_OVERFLOW = 3'd5;
+    localparam logic [2:0] STATUS_UNSUPPORTED = 3'd6;
 
     typedef enum logic [2:0] {
         S_IDLE,
@@ -63,6 +68,8 @@ module modbus_master_fsm #(
     logic [$clog2(MAX_RESPONSE_BYTES+1)-1:0] response_length;
     logic [$clog2(TIMEOUT_CYCLES+1)-1:0] timeout_count;
     logic [15:0] response_crc;
+    logic response_overflow;
+    integer register_index;
 
     function automatic logic [15:0] crc16_update(
         input logic [15:0] crc_in,
@@ -118,21 +125,33 @@ module modbus_master_fsm #(
             response_exception  <= 8'd0;
             response_data       <= 16'd0;
             response_byte_count <= 8'd0;
+            response_register_count <= 8'd0;
+            response_overflow    <= 1'b0;
+            for (register_index = 0; register_index < MAX_READ_REGISTERS; register_index++)
+                response_registers[register_index] <= 16'd0;
         end else begin
             builder_start  <= 1'b0;
             response_valid <= 1'b0;
 
             case (state)
                 S_IDLE: begin
-                    response_length <= '0;
-                    timeout_count   <= '0;
+                    response_length         <= '0;
+                    timeout_count           <= '0;
+                    response_overflow       <= 1'b0;
+                    response_register_count <= 8'd0;
                     if (cmd_valid) begin
-                        selected_slave    <= cmd_slave_addr;
-                        selected_function <= cmd_function;
-                        selected_register <= cmd_register_addr;
-                        selected_value    <= (cmd_function == FC_READ_HOLDING)
-                                             ? cmd_quantity : cmd_write_data;
-                        state <= S_BUILD;
+                        if ((cmd_function != FC_READ_HOLDING) &&
+                            (cmd_function != FC_WRITE_SINGLE)) begin
+                            response_status <= STATUS_UNSUPPORTED;
+                            state <= S_DONE;
+                        end else begin
+                            selected_slave    <= cmd_slave_addr;
+                            selected_function <= cmd_function;
+                            selected_register <= cmd_register_addr;
+                            selected_value    <= (cmd_function == FC_READ_HOLDING)
+                                                 ? cmd_quantity : cmd_write_data;
+                            state <= S_BUILD;
+                        end
                     end
                 end
 
@@ -151,10 +170,14 @@ module modbus_master_fsm #(
                 end
 
                 S_WAIT_RESPONSE: begin
-                    if (rx_valid && response_length < MAX_RESPONSE_BYTES) begin
-                        response_buffer[response_length] <= rx_data;
-                        response_length <= response_length + 1'b1;
-                        response_crc <= crc16_update(response_crc, rx_data);
+                    if (rx_valid) begin
+                        if (response_length < MAX_RESPONSE_BYTES) begin
+                            response_buffer[response_length] <= rx_data;
+                            response_length <= response_length + 1'b1;
+                            response_crc <= crc16_update(response_crc, rx_data);
+                        end else begin
+                            response_overflow <= 1'b1;
+                        end
                         timeout_count <= '0;
                     end else if (timeout_count == TIMEOUT_CYCLES-1) begin
                         response_status <= STATUS_TIMEOUT;
@@ -171,8 +194,11 @@ module modbus_master_fsm #(
                     response_exception  <= 8'd0;
                     response_data       <= 16'd0;
                     response_byte_count <= 8'd0;
+                    response_register_count <= 8'd0;
 
-                    if (response_length < 5) begin
+                    if (response_overflow) begin
+                        response_status <= STATUS_OVERFLOW;
+                    end else if (response_length < 5) begin
                         response_status <= STATUS_INVALID;
                     end else if (response_crc != 16'h0000) begin
                         response_status <= STATUS_CRC_ERROR;
@@ -192,10 +218,21 @@ module modbus_master_fsm #(
                             (response_buffer[2][0] != 0) ||
                             (response_length != response_buffer[2] + 5)) begin
                             response_status <= STATUS_INVALID;
+                        end else if ((response_buffer[2] >> 1) > MAX_READ_REGISTERS) begin
+                            response_status <= STATUS_OVERFLOW;
                         end else begin
                             response_status     <= STATUS_OK;
                             response_byte_count <= response_buffer[2];
+                            response_register_count <= response_buffer[2] >> 1;
                             response_data       <= {response_buffer[3], response_buffer[4]};
+                            for (register_index = 0; register_index < MAX_READ_REGISTERS; register_index++) begin
+                                if (register_index < (response_buffer[2] >> 1)) begin
+                                    response_registers[register_index] <= {
+                                        response_buffer[3 + (register_index * 2)],
+                                        response_buffer[4 + (register_index * 2)]
+                                    };
+                                end
+                            end
                         end
                     end else if (selected_function == FC_WRITE_SINGLE) begin
                         if ((response_length != 8) ||

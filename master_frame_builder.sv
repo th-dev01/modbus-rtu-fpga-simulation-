@@ -1,3 +1,5 @@
+import modbus_crc_pkg::*;
+
 module master_frame_builder (
     input  logic        clk,
     input  logic        rst_n,
@@ -15,30 +17,13 @@ module master_frame_builder (
 
     logic [7:0] frame [0:7];
     logic [15:0] crc;
-    integer i;
-
-    function automatic logic [15:0] crc16_update(
-        input logic [15:0] crc_in,
-        input logic [7:0] data
-    );
-        logic [15:0] next_crc;
-        integer bit_index;
-        begin
-            next_crc = crc_in ^ data;
-            for (bit_index = 0; bit_index < 8; bit_index++) begin
-                if (next_crc[0])
-                    next_crc = (next_crc >> 1) ^ 16'hA001;
-                else
-                    next_crc = next_crc >> 1;
-            end
-            return next_crc;
-        end
-    endfunction
+    integer crc_index;
+    integer reset_index;
 
     always_comb begin
         crc = 16'hFFFF;
-        for (i = 0; i < 6; i++)
-            crc = crc16_update(crc, frame[i]);
+        for (crc_index = 0; crc_index < 6; crc_index++)
+            crc = crc16_update(crc, frame[crc_index]);
 
         frame_valid = busy;
         case (frame_index)
@@ -52,8 +37,8 @@ module master_frame_builder (
         if (!rst_n) begin
             busy        <= 1'b0;
             frame_index <= 3'd0;
-            for (i = 0; i < 8; i++)
-                frame[i] <= 8'd0;
+            for (reset_index = 0; reset_index < 8; reset_index++)
+                frame[reset_index] <= 8'd0;
         end else begin
             if (start && !busy) begin
                 frame[0] <= slave_addr;

@@ -122,9 +122,14 @@ module modbus_master_fsm #(
                     response_length         <= '0;
                     timeout_count           <= '0;
                     response_overflow       <= 1'b0;
-                    response_register_count <= 8'd0;
-                    overflow_byte_count     <= 16'd0;
                     if (cmd_valid) begin
+                        // Mantem a resposta anterior disponivel durante IDLE e
+                        // limpa as saidas somente ao aceitar um novo comando.
+                        response_exception      <= 8'd0;
+                        response_data           <= 16'd0;
+                        response_byte_count     <= 8'd0;
+                        response_register_count <= 8'd0;
+                        overflow_byte_count     <= 16'd0;
                         if ((cmd_function != FC_READ_HOLDING) &&
                             (cmd_function != FC_WRITE_SINGLE)) begin
                             response_status <= STATUS_UNSUPPORTED;

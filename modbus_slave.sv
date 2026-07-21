@@ -98,6 +98,11 @@ module modbus_slave (
         req_func              = rx_buffer[1];
         req_start_addr        = {rx_buffer[2], rx_buffer[3]};
         req_value_or_quantity = {rx_buffer[4], rx_buffer[5]};
+
+        // Interface ready/valid: o byte e valid permanecem estaveis ate a
+        // UART aceita-los. O indice so avanca no handshake tx_valid && tx_ready.
+        tx_valid = (state == S_TRANSMIT);
+        tx_data  = tx_buffer[tx_index];
     end
 
     always_ff @(posedge clk or negedge rst_n) begin
@@ -112,8 +117,6 @@ module modbus_slave (
             exception_code        <= 8'd0;
             read_index            <= 8'd0;
             read_quantity         <= 8'd0;
-            tx_data               <= 8'd0;
-            tx_valid              <= 1'b0;
             crc_en                <= 1'b0;
             crc_clear             <= 1'b0;
             crc_data_in           <= 8'd0;
@@ -126,7 +129,6 @@ module modbus_slave (
                 tx_buffer[reset_index] <= 8'd0;
             end
         end else begin
-            tx_valid  <= 1'b0;
             crc_en    <= 1'b0;
             crc_clear <= 1'b0;
             reg_wr_en <= 1'b0;
@@ -301,9 +303,6 @@ module modbus_slave (
 
                 S_TRANSMIT: begin
                     if (tx_ready) begin
-                        tx_data  <= tx_buffer[tx_index];
-                        tx_valid <= 1'b1;
-
                         if (tx_index == (tx_count - COUNT_ONE)) begin
                             state <= S_IDLE;
                         end

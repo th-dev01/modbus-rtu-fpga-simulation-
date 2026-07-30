@@ -1,0 +1,422 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/eduar/Downloads/modbus-rtu-fpga-simulation--top-level/modbus-rtu-fpga-simulation--top-level
+vbaud_gen
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1784931550
+!i10b 1
+!s100 Z1WZKTOOQJACbm0U3F33k0
+I96l5^S4`fmNWlJf0@Wz=b3
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 baud_gen_sv_unit
+S1
+R0
+Z4 w1784670615
+8modbus_fpga_uema/rtl/baud_gen.sv
+Fmodbus_fpga_uema/rtl/baud_gen.sv
+Z5 L0 10
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1784931550.000000
+Z8 !s107 tb_modbus_top_level.sv|modbus_top_level.sv|modbus_fpga_uema/rtl/frame_timer.sv|modbus_fpga_uema/rtl/uart_rx.sv|modbus_fpga_uema/rtl/uart_tx.sv|modbus_fpga_uema/rtl/baud_gen.sv|modbus_slave.sv|modbus_register_file.sv|modbus_master_fsm.sv|master_frame_builder.sv|modbus_crc16.sv|modbus_crc_pkg.sv|modbus_defs_pkg.sv|
+Z9 !s90 -work|work_msim|-sv|modbus_defs_pkg.sv|modbus_crc_pkg.sv|modbus_crc16.sv|master_frame_builder.sv|modbus_master_fsm.sv|modbus_register_file.sv|modbus_slave.sv|modbus_fpga_uema/rtl/baud_gen.sv|modbus_fpga_uema/rtl/uart_tx.sv|modbus_fpga_uema/rtl/uart_rx.sv|modbus_fpga_uema/rtl/frame_timer.sv|modbus_top_level.sv|tb_modbus_top_level.sv|
+!i113 1
+Z10 o-work work_msim -sv
+Z11 tCvgOpt 0
+vframe_timer
+R1
+R2
+!i10b 1
+!s100 HYgk_Yf6EHNJh2je^=XlX1
+IdkLi:ei[[XOBofCX;nY1k2
+R3
+!s105 frame_timer_sv_unit
+S1
+R0
+R4
+8modbus_fpga_uema/rtl/frame_timer.sv
+Fmodbus_fpga_uema/rtl/frame_timer.sv
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vmaster_frame_builder
+R1
+Z12 DXx4 work 14 modbus_crc_pkg 0 22 AI<0B:0m^Q0RTE[Gm1czK3
+DXx4 work 28 master_frame_builder_sv_unit 0 22 aLfBBdd<d[C5gle`E2COR1
+R3
+r1
+!s85 0
+31
+!i10b 1
+!s100 2EA1>HjVZ;8k<SF3zB72f2
+IcPPj>e^>aO9:mNk7SX]O60
+!s105 master_frame_builder_sv_unit
+S1
+R0
+R4
+Z13 8master_frame_builder.sv
+Z14 Fmaster_frame_builder.sv
+L0 3
+R6
+R7
+R8
+R9
+!i113 1
+R10
+R11
+Xmaster_frame_builder_sv_unit
+R1
+R12
+VaLfBBdd<d[C5gle`E2COR1
+r1
+!s85 0
+31
+!i10b 1
+!s100 zDh0kQfMI77cIzY6kl[Cm3
+IaLfBBdd<d[C5gle`E2COR1
+!i103 1
+S1
+R0
+R4
+R13
+R14
+L0 1
+R6
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vmodbus_crc16
+R1
+R2
+!i10b 1
+!s100 nfGU50Jme<zn=5:a@SfHU0
+IO>T4JFc8G6le7Ln<^9?CD0
+R3
+!s105 modbus_crc16_sv_unit
+S1
+R0
+R4
+8modbus_crc16.sv
+Fmodbus_crc16.sv
+L0 3
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+Xmodbus_crc_pkg
+R1
+R2
+!i10b 1
+!s100 CNHVBbc4mORZoglH>8gic3
+IAI<0B:0m^Q0RTE[Gm1czK3
+VAI<0B:0m^Q0RTE[Gm1czK3
+S1
+R0
+R4
+8modbus_crc_pkg.sv
+Fmodbus_crc_pkg.sv
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+Xmodbus_defs_pkg
+R1
+R2
+!i10b 1
+!s100 G5X92K0[nEg>JfdmFnWCb1
+Ik>cPSkjD>Ez[aZIQHlbRh1
+Vk>cPSkjD>Ez[aZIQHlbRh1
+S1
+R0
+R4
+8modbus_defs_pkg.sv
+Fmodbus_defs_pkg.sv
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vmodbus_master_fsm
+R1
+R12
+Z15 DXx4 work 15 modbus_defs_pkg 0 22 k>cPSkjD>Ez[aZIQHlbRh1
+DXx4 work 25 modbus_master_fsm_sv_unit 0 22 5C1b7j_dkmQ@GgNVXi1I^0
+R3
+r1
+!s85 0
+31
+!i10b 1
+!s100 QNa:N>g]4YhmKKe1i17Z`1
+I9UkfQF`>n]6S76<z57h0Y1
+!s105 modbus_master_fsm_sv_unit
+S1
+R0
+Z16 w1784673971
+Z17 8modbus_master_fsm.sv
+Z18 Fmodbus_master_fsm.sv
+L0 4
+R6
+R7
+R8
+R9
+!i113 1
+R10
+R11
+Xmodbus_master_fsm_sv_unit
+R1
+R12
+R15
+V5C1b7j_dkmQ@GgNVXi1I^0
+r1
+!s85 0
+31
+!i10b 1
+!s100 l:ML>_d?R;k8M>0g>`IiB1
+I5C1b7j_dkmQ@GgNVXi1I^0
+!i103 1
+S1
+R0
+R16
+R17
+R18
+L0 1
+R6
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vmodbus_register_file
+R1
+R2
+!i10b 1
+!s100 lR8eA`?hN=o?XcfdV_5EF3
+I[C]S]einGDg@P8?cSnL?@0
+R3
+!s105 modbus_register_file_sv_unit
+S1
+R0
+R4
+8modbus_register_file.sv
+Fmodbus_register_file.sv
+L0 3
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vmodbus_slave
+R1
+R2
+!i10b 1
+!s100 HF=f12cRd8bBSA0X3f7]O3
+IWzzI7il?2@jJIHAB46ldl0
+R3
+!s105 modbus_slave_sv_unit
+S1
+R0
+w1784672779
+8modbus_slave.sv
+Fmodbus_slave.sv
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vmodbus_top_level
+R1
+R15
+DXx4 work 24 modbus_top_level_sv_unit 0 22 BEnOBbblzjT^]URchX:7Q2
+R3
+r1
+!s85 0
+31
+!i10b 1
+!s100 Y5A=TYj]4a9GS_@1A:khE1
+I=bE96_`1o70i1PI5SV`EQ0
+!s105 modbus_top_level_sv_unit
+S1
+R0
+Z19 w1784930981
+Z20 8modbus_top_level.sv
+Z21 Fmodbus_top_level.sv
+L0 5
+R6
+R7
+R8
+R9
+!i113 1
+R10
+R11
+Xmodbus_top_level_sv_unit
+R1
+R15
+VBEnOBbblzjT^]URchX:7Q2
+r1
+!s85 0
+31
+!i10b 1
+!s100 gSCQO:42G`f4eS<1A23hY1
+IBEnOBbblzjT^]URchX:7Q2
+!i103 1
+S1
+R0
+R19
+R20
+R21
+L0 3
+R6
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vtb_modbus_top_level
+R1
+R15
+DXx4 work 27 tb_modbus_top_level_sv_unit 0 22 3Z<7RSX_FPc[SNYXY[TTC1
+R3
+r1
+!s85 0
+31
+!i10b 1
+!s100 mFWaAh5X=V6i3;U=8PabJ1
+I?g3=`z>D4SPgSVH<71A5L1
+!s105 tb_modbus_top_level_sv_unit
+S1
+R0
+Z22 w1784931330
+Z23 8tb_modbus_top_level.sv
+Z24 Ftb_modbus_top_level.sv
+L0 5
+R6
+R7
+R8
+R9
+!i113 1
+R10
+R11
+Xtb_modbus_top_level_sv_unit
+R1
+R15
+V3Z<7RSX_FPc[SNYXY[TTC1
+r1
+!s85 0
+31
+!i10b 1
+!s100 2jGg]fe5U`P`YbQ47?M930
+I3Z<7RSX_FPc[SNYXY[TTC1
+!i103 1
+S1
+R0
+R22
+R23
+R24
+L0 3
+R6
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vuart_rx
+R1
+R2
+!i10b 1
+!s100 l5j>GLHc6@bSS8?fKl;^60
+Il^e8SIOX9Vl66bR]n6PTZ2
+R3
+!s105 uart_rx_sv_unit
+S1
+R0
+R4
+8modbus_fpga_uema/rtl/uart_rx.sv
+Fmodbus_fpga_uema/rtl/uart_rx.sv
+L0 11
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vuart_tx
+R1
+R2
+!i10b 1
+!s100 kkLX^X=Ofm>[H?4@J3]6f3
+I25`IXMUDLnZb8AbSD`;?S0
+R3
+!s105 uart_tx_sv_unit
+S1
+R0
+w1784673817
+8modbus_fpga_uema/rtl/uart_tx.sv
+Fmodbus_fpga_uema/rtl/uart_tx.sv
+L0 5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11

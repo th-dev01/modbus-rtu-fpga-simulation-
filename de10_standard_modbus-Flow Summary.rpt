@@ -1,0 +1,58 @@
+Flow Summary report for de10_standard_modbus
+Thu Jul 23 20:23:31 2026
+Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++---------------------------------------------------------------------------------------+
+; Flow Summary                                                                          ;
++---------------------------------+-----------------------------------------------------+
+; Flow Status                     ; Successful - Thu Jul 23 19:41:01 2026               ;
+; Quartus Prime Version           ; 24.1std.0 Build 1077 03/04/2025 SC Standard Edition ;
+; Revision Name                   ; de10_standard_modbus                                ;
+; Top-level Entity Name           ; de10_standard_modbus_demo                           ;
+; Family                          ; Cyclone V                                           ;
+; Device                          ; 5CSXFC6D6F31C6                                      ;
+; Timing Models                   ; Final                                               ;
+; Logic utilization (in ALMs)     ; 1,613 / 41,910 ( 4 % )                              ;
+; Total registers                 ; 2346                                                ;
+; Total pins                      ; 67 / 499 ( 13 % )                                   ;
+; Total virtual pins              ; 0                                                   ;
+; Total block memory bits         ; 0 / 5,662,720 ( 0 % )                               ;
+; Total DSP Blocks                ; 0 / 112 ( 0 % )                                     ;
+; Total HSSI RX PCSs              ; 0 / 9 ( 0 % )                                       ;
+; Total HSSI PMA RX Deserializers ; 0 / 9 ( 0 % )                                       ;
+; Total HSSI TX PCSs              ; 0 / 9 ( 0 % )                                       ;
+; Total HSSI PMA TX Serializers   ; 0 / 9 ( 0 % )                                       ;
+; Total PLLs                      ; 0 / 15 ( 0 % )                                      ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                                       ;
++---------------------------------+-----------------------------------------------------+
+
+

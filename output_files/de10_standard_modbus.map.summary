@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Fri Jul 24 19:32:21 2026
+Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Standard Edition
+Revision Name : de10_standard_modbus
+Top-level Entity Name : de10_standard_modbus_demo
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 3840
+Total pins : 67
+Total virtual pins : 0
+Total block memory bits : 0
+Total DSP Blocks : 0
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0
+Total DLLs : 0

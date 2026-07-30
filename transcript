@@ -1,0 +1,17 @@
+# vsim -c -lib work_msim_master_study tb_modbus_master_fsm -do "run -all; quit -f" 
+# Start time: 14:15:06 on Jul 28,2026
+# Loading sv_std.std
+# Loading work_msim_master_study.modbus_defs_pkg
+# Loading work_msim_master_study.modbus_crc_pkg
+# Loading work_msim_master_study.tb_modbus_master_fsm_sv_unit
+# Loading work_msim_master_study.tb_modbus_master_fsm
+# Loading work_msim_master_study.modbus_master_fsm_sv_unit
+# Loading work_msim_master_study.modbus_master_fsm
+# Loading work_msim_master_study.master_frame_builder_sv_unit
+# Loading work_msim_master_study.master_frame_builder
+# run -all
+# Todos os testes do mestre Modbus foram aprovados.
+# ** Note: $finish    : tb_modbus_master_fsm.sv(326)
+#    Time: 4895 ns  Iteration: 1  Instance: /tb_modbus_master_fsm
+# End time: 14:15:07 on Jul 28,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

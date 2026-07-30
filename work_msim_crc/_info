@@ -1,0 +1,130 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/eduar/Downloads/modbus-rtu-fpga-simulation--top-level/modbus-rtu-fpga-simulation--top-level
+vmodbus_crc16
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1784931540
+!i10b 1
+!s100 nfGU50Jme<zn=5:a@SfHU0
+IJ[4Y]OMMcZe<ST<0_kVbg1
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 modbus_crc16_sv_unit
+S1
+R0
+Z4 w1784670615
+8modbus_crc16.sv
+Fmodbus_crc16.sv
+L0 3
+Z5 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z6 !s108 1784931540.000000
+Z7 !s107 tb_modbus_slave_bad_crc.sv|modbus_slave.sv|modbus_crc16.sv|modbus_crc_pkg.sv|
+Z8 !s90 -work|work_msim_crc|-sv|modbus_crc_pkg.sv|modbus_crc16.sv|modbus_slave.sv|tb_modbus_slave_bad_crc.sv|
+!i113 1
+Z9 o-work work_msim_crc -sv
+Z10 tCvgOpt 0
+Xmodbus_crc_pkg
+R1
+R2
+!i10b 1
+!s100 CNHVBbc4mORZoglH>8gic3
+IPIHKEC]b2[k4i27hUPW6M2
+VPIHKEC]b2[k4i27hUPW6M2
+S1
+R0
+R4
+8modbus_crc_pkg.sv
+Fmodbus_crc_pkg.sv
+L0 1
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 1
+R9
+R10
+vmodbus_slave
+R1
+R2
+!i10b 1
+!s100 HF=f12cRd8bBSA0X3f7]O3
+I72C1B2e1gBHF@Z@N3I`XQ1
+R3
+!s105 modbus_slave_sv_unit
+S1
+R0
+w1784672779
+8modbus_slave.sv
+Fmodbus_slave.sv
+L0 10
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 1
+R9
+R10
+vtb_modbus_slave_bad_crc
+R1
+Z11 DXx4 work 14 modbus_crc_pkg 0 22 PIHKEC]b2[k4i27hUPW6M2
+DXx4 work 31 tb_modbus_slave_bad_crc_sv_unit 0 22 >A6Kal<oo[k:4EdY37NoI3
+R3
+r1
+!s85 0
+31
+!i10b 1
+!s100 ZJjG4Gb862]6_dzGTMY7R2
+If9XbcYU_L8Xlm1QTfB?MJ0
+!s105 tb_modbus_slave_bad_crc_sv_unit
+S1
+R0
+Z12 w1784931335
+Z13 8tb_modbus_slave_bad_crc.sv
+Z14 Ftb_modbus_slave_bad_crc.sv
+L0 5
+R5
+R6
+R7
+R8
+!i113 1
+R9
+R10
+Xtb_modbus_slave_bad_crc_sv_unit
+R1
+R11
+V>A6Kal<oo[k:4EdY37NoI3
+r1
+!s85 0
+31
+!i10b 1
+!s100 >YHjcTX8?dNi?^z;;1NAf3
+I>A6Kal<oo[k:4EdY37NoI3
+!i103 1
+S1
+R0
+R12
+R13
+R14
+L0 3
+R5
+R6
+R7
+R8
+!i113 1
+R9
+R10

@@ -1,0 +1,207 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/eduar/Downloads/modbus-rtu-fpga-simulation--top-level/modbus-rtu-fpga-simulation--top-level
+vmaster_frame_builder
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 DXx4 work 14 modbus_crc_pkg 0 22 _;jCU;NngCm[c4lU2XCL01
+DXx4 work 28 master_frame_builder_sv_unit 0 22 EL:`fNE<]:Kdz^O[=KnQH1
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+r1
+!s85 0
+31
+!i10b 1
+!s100 2EA1>HjVZ;8k<SF3zB72f2
+IcQzKS6LKUc<fkZ2Z^fAEh1
+!s105 master_frame_builder_sv_unit
+S1
+R0
+Z4 w1784670615
+Z5 8master_frame_builder.sv
+Z6 Fmaster_frame_builder.sv
+L0 3
+Z7 OV;L;10.5b;63
+Z8 !s108 1785258901.000000
+Z9 !s107 tb_modbus_master_fsm.sv|modbus_master_fsm.sv|master_frame_builder.sv|modbus_crc_pkg.sv|modbus_defs_pkg.sv|
+Z10 !s90 -work|work_msim_master_study|-sv|modbus_defs_pkg.sv|modbus_crc_pkg.sv|master_frame_builder.sv|modbus_master_fsm.sv|tb_modbus_master_fsm.sv|
+!i113 1
+Z11 o-work work_msim_master_study -sv
+Z12 tCvgOpt 0
+Xmaster_frame_builder_sv_unit
+R1
+R2
+VEL:`fNE<]:Kdz^O[=KnQH1
+r1
+!s85 0
+31
+!i10b 1
+!s100 zDh0kQfMI77cIzY6kl[Cm3
+IEL:`fNE<]:Kdz^O[=KnQH1
+!i103 1
+S1
+R0
+R4
+R5
+R6
+L0 1
+R7
+R8
+R9
+R10
+!i113 1
+R11
+R12
+Xmodbus_crc_pkg
+R1
+Z13 !s110 1785258902
+!i10b 1
+!s100 CNHVBbc4mORZoglH>8gic3
+I_;jCU;NngCm[c4lU2XCL01
+V_;jCU;NngCm[c4lU2XCL01
+S1
+R0
+R4
+8modbus_crc_pkg.sv
+Fmodbus_crc_pkg.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+Xmodbus_defs_pkg
+R1
+R13
+!i10b 1
+!s100 G5X92K0[nEg>JfdmFnWCb1
+IR`N2<k:b_UZXl3o0WLA<N0
+VR`N2<k:b_UZXl3o0WLA<N0
+S1
+R0
+R4
+8modbus_defs_pkg.sv
+Fmodbus_defs_pkg.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+vmodbus_master_fsm
+R1
+R2
+Z14 DXx4 work 15 modbus_defs_pkg 0 22 R`N2<k:b_UZXl3o0WLA<N0
+DXx4 work 25 modbus_master_fsm_sv_unit 0 22 UNAeb^EP7FELDh6agPN6K2
+R3
+r1
+!s85 0
+31
+!i10b 1
+!s100 QNa:N>g]4YhmKKe1i17Z`1
+Ikbd;zc`2nckW_ak91B:B90
+!s105 modbus_master_fsm_sv_unit
+S1
+R0
+Z15 w1784673971
+Z16 8modbus_master_fsm.sv
+Z17 Fmodbus_master_fsm.sv
+L0 4
+R7
+R8
+R9
+R10
+!i113 1
+R11
+R12
+Xmodbus_master_fsm_sv_unit
+R1
+R2
+R14
+VUNAeb^EP7FELDh6agPN6K2
+r1
+!s85 0
+31
+!i10b 1
+!s100 l:ML>_d?R;k8M>0g>`IiB1
+IUNAeb^EP7FELDh6agPN6K2
+!i103 1
+S1
+R0
+R15
+R16
+R17
+L0 1
+R7
+R8
+R9
+R10
+!i113 1
+R11
+R12
+vtb_modbus_master_fsm
+R1
+R2
+R14
+DXx4 work 28 tb_modbus_master_fsm_sv_unit 0 22 Vo4Qe]A1zzAJ3P1EaFM;e0
+R3
+r1
+!s85 0
+31
+!i10b 1
+!s100 W2>B=_JdQA3W2k:QMF31d3
+IKUi^l2KXXl8f5@5l3=h`]0
+!s105 tb_modbus_master_fsm_sv_unit
+S1
+R0
+R4
+Z18 8tb_modbus_master_fsm.sv
+Z19 Ftb_modbus_master_fsm.sv
+L0 6
+R7
+R8
+R9
+R10
+!i113 1
+R11
+R12
+Xtb_modbus_master_fsm_sv_unit
+R1
+R2
+R14
+VVo4Qe]A1zzAJ3P1EaFM;e0
+r1
+!s85 0
+31
+!i10b 1
+!s100 `ablO^lhXn3k9=9WE6?>R3
+IVo4Qe]A1zzAJ3P1EaFM;e0
+!i103 1
+S1
+R0
+R4
+R18
+R19
+L0 3
+R7
+R8
+R9
+R10
+!i113 1
+R11
+R12

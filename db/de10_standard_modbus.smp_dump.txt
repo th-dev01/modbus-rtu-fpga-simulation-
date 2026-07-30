@@ -1,0 +1,105 @@
+
+State Machine - |de10_standard_modbus_demo|modbus_top_level:modbus|uart_rx:master_uart_rx|current_state
+Name current_state.STOP_BIT current_state.DATA_BITS current_state.START_BIT current_state.IDLE current_state.DONE 
+current_state.IDLE 0 0 0 0 0 
+current_state.START_BIT 0 0 1 1 0 
+current_state.DATA_BITS 0 1 0 1 0 
+current_state.STOP_BIT 1 0 0 1 0 
+current_state.DONE 0 0 0 1 1 
+
+State Machine - |de10_standard_modbus_demo|modbus_top_level:modbus|uart_tx:slave_nodes[1].slave_uart_tx|state
+Name state.DATA_BITS state.START_BIT state.ALIGN_START state.IDLE state.STOP_BIT 
+state.IDLE 0 0 0 0 0 
+state.ALIGN_START 0 0 1 1 0 
+state.START_BIT 0 1 0 1 0 
+state.DATA_BITS 1 0 0 1 0 
+state.STOP_BIT 0 0 0 1 1 
+
+State Machine - |de10_standard_modbus_demo|modbus_top_level:modbus|modbus_slave:slave_nodes[1].slave|state
+Name state.S_TRANSMIT state.S_APPEND_RESP_CRC state.S_CRC_WAIT_RESP state.S_CRC_FEED_RESP state.S_CRC_CLEAR_RESP state.S_BUILD_WRITE_RESPONSE state.S_BUILD_EXCEPTION state.S_WRITE_REGISTER state.S_READ_CAPTURE state.S_READ_SETUP state.S_CHECK_REQUEST state.S_CRC_WAIT_REQ state.S_CRC_FEED_REQ state.S_CRC_CLEAR_REQ state.S_RECEIVE state.S_IDLE 
+state.S_IDLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.S_RECEIVE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.S_CRC_CLEAR_REQ 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.S_CRC_FEED_REQ 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.S_CRC_WAIT_REQ 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.S_CHECK_REQUEST 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.S_READ_SETUP 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.S_READ_CAPTURE 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.S_WRITE_REGISTER 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.S_BUILD_EXCEPTION 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.S_BUILD_WRITE_RESPONSE 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.S_CRC_CLEAR_RESP 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.S_CRC_FEED_RESP 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_CRC_WAIT_RESP 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_APPEND_RESP_CRC 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_TRANSMIT 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |de10_standard_modbus_demo|modbus_top_level:modbus|uart_tx:slave_nodes[0].slave_uart_tx|state
+Name state.DATA_BITS state.START_BIT state.ALIGN_START state.IDLE state.STOP_BIT 
+state.IDLE 0 0 0 0 0 
+state.ALIGN_START 0 0 1 1 0 
+state.START_BIT 0 1 0 1 0 
+state.DATA_BITS 1 0 0 1 0 
+state.STOP_BIT 0 0 0 1 1 
+
+State Machine - |de10_standard_modbus_demo|test_state
+Name test_state.TEST_FAIL_STATE test_state.TEST_DONE_STATE test_state.TEST_PAUSE test_state.TEST_CHECK_SECOND test_state.TEST_WAIT test_state.TEST_SEND test_state.TEST_IDLE 
+test_state.TEST_IDLE 0 0 0 0 0 0 0 
+test_state.TEST_SEND 0 0 0 0 0 1 1 
+test_state.TEST_WAIT 0 0 0 0 1 0 1 
+test_state.TEST_CHECK_SECOND 0 0 0 1 0 0 1 
+test_state.TEST_PAUSE 0 0 1 0 0 0 1 
+test_state.TEST_DONE_STATE 0 1 0 0 0 0 1 
+test_state.TEST_FAIL_STATE 1 0 0 0 0 0 1 
+
+State Machine - |de10_standard_modbus_demo|modbus_top_level:modbus|uart_rx:slave_nodes[1].slave_uart_rx|current_state
+Name current_state.STOP_BIT current_state.DATA_BITS current_state.START_BIT current_state.IDLE current_state.DONE 
+current_state.IDLE 0 0 0 0 0 
+current_state.START_BIT 0 0 1 1 0 
+current_state.DATA_BITS 0 1 0 1 0 
+current_state.STOP_BIT 1 0 0 1 0 
+current_state.DONE 0 0 0 1 1 
+
+State Machine - |de10_standard_modbus_demo|modbus_top_level:modbus|modbus_slave:slave_nodes[0].slave|state
+Name state.S_TRANSMIT state.S_APPEND_RESP_CRC state.S_CRC_WAIT_RESP state.S_CRC_FEED_RESP state.S_CRC_CLEAR_RESP state.S_BUILD_WRITE_RESPONSE state.S_BUILD_EXCEPTION state.S_WRITE_REGISTER state.S_READ_CAPTURE state.S_READ_SETUP state.S_CHECK_REQUEST state.S_CRC_WAIT_REQ state.S_CRC_FEED_REQ state.S_CRC_CLEAR_REQ state.S_RECEIVE state.S_IDLE 
+state.S_IDLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.S_RECEIVE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.S_CRC_CLEAR_REQ 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.S_CRC_FEED_REQ 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.S_CRC_WAIT_REQ 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.S_CHECK_REQUEST 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.S_READ_SETUP 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.S_READ_CAPTURE 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.S_WRITE_REGISTER 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.S_BUILD_EXCEPTION 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.S_BUILD_WRITE_RESPONSE 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.S_CRC_CLEAR_RESP 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.S_CRC_FEED_RESP 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_CRC_WAIT_RESP 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_APPEND_RESP_CRC 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_TRANSMIT 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |de10_standard_modbus_demo|modbus_top_level:modbus|uart_rx:slave_nodes[0].slave_uart_rx|current_state
+Name current_state.STOP_BIT current_state.DATA_BITS current_state.START_BIT current_state.IDLE current_state.DONE 
+current_state.IDLE 0 0 0 0 0 
+current_state.START_BIT 0 0 1 1 0 
+current_state.DATA_BITS 0 1 0 1 0 
+current_state.STOP_BIT 1 0 0 1 0 
+current_state.DONE 0 0 0 1 1 
+
+State Machine - |de10_standard_modbus_demo|modbus_top_level:modbus|uart_tx:master_uart_tx|state
+Name state.DATA_BITS state.START_BIT state.ALIGN_START state.IDLE state.STOP_BIT 
+state.IDLE 0 0 0 0 0 
+state.ALIGN_START 0 0 1 1 0 
+state.START_BIT 0 1 0 1 0 
+state.DATA_BITS 1 0 0 1 0 
+state.STOP_BIT 0 0 0 1 1 
+
+State Machine - |de10_standard_modbus_demo|modbus_top_level:modbus|modbus_master_fsm:master|state
+Name state.S_DONE state.S_VALIDATE state.S_WAIT_RESPONSE state.S_SEND state.S_BUILD state.S_IDLE 
+state.S_IDLE 0 0 0 0 0 0 
+state.S_BUILD 0 0 0 0 1 1 
+state.S_SEND 0 0 0 1 0 1 
+state.S_WAIT_RESPONSE 0 0 1 0 0 1 
+state.S_VALIDATE 0 1 0 0 0 1 
+state.S_DONE 1 0 0 0 0 1 

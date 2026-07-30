@@ -1,0 +1,62 @@
+Resource Utilization by Entity report for de10_standard_modbus
+Thu Jul 23 20:24:15 2026
+Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Resource Utilization by Entity
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                ;
++-----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------+---------------------------+--------------+
+; Compilation Hierarchy Node                    ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                            ; Entity Name               ; Library Name ;
++-----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------+---------------------------+--------------+
+; |de10_standard_modbus_demo                    ; 2189 (383)          ; 2234 (188)                ; 0                 ; 0          ; 67   ; 0            ; |de10_standard_modbus_demo                                                                                     ; de10_standard_modbus_demo ; work         ;
+;    |hex7seg:hex_digit_0|                      ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|hex7seg:hex_digit_0                                                                 ; hex7seg                   ; work         ;
+;    |hex7seg:hex_digit_1|                      ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|hex7seg:hex_digit_1                                                                 ; hex7seg                   ; work         ;
+;    |hex7seg:hex_digit_2|                      ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|hex7seg:hex_digit_2                                                                 ; hex7seg                   ; work         ;
+;    |hex7seg:hex_digit_3|                      ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|hex7seg:hex_digit_3                                                                 ; hex7seg                   ; work         ;
+;    |hex7seg:hex_status|                       ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|hex7seg:hex_status                                                                  ; hex7seg                   ; work         ;
+;    |hex7seg:hex_test|                         ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|hex7seg:hex_test                                                                    ; hex7seg                   ; work         ;
+;    |modbus_top_level:modbus|                  ; 1764 (0)            ; 2046 (0)                  ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|modbus_top_level:modbus                                                             ; modbus_top_level          ; work         ;
+;       |baud_gen:baud_generator|               ; 11 (11)             ; 10 (10)                   ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|modbus_top_level:modbus|baud_gen:baud_generator                                     ; baud_gen                  ; work         ;
+;       |frame_timer:master_frame_timer|        ; 9 (9)               ; 7 (7)                     ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|modbus_top_level:modbus|frame_timer:master_frame_timer                              ; frame_timer               ; work         ;
+;       |frame_timer:slave_frame_timer|         ; 9 (9)               ; 7 (7)                     ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|modbus_top_level:modbus|frame_timer:slave_frame_timer                               ; frame_timer               ; work         ;
+;       |modbus_crc16:slave_crc|                ; 22 (22)             ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|modbus_top_level:modbus|modbus_crc16:slave_crc                                      ; modbus_crc16              ; work         ;
+;       |modbus_master_fsm:master|              ; 277 (222)           ; 286 (234)                 ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|modbus_top_level:modbus|modbus_master_fsm:master                                    ; modbus_master_fsm         ; work         ;
+;          |master_frame_builder:frame_builder| ; 55 (55)             ; 52 (52)                   ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|modbus_top_level:modbus|modbus_master_fsm:master|master_frame_builder:frame_builder ; master_frame_builder      ; work         ;
+;       |modbus_register_file:slave_registers|  ; 464 (464)           ; 1024 (1024)               ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|modbus_top_level:modbus|modbus_register_file:slave_registers                        ; modbus_register_file      ; work         ;
+;       |modbus_slave:slave|                    ; 802 (802)           ; 610 (610)                 ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|modbus_top_level:modbus|modbus_slave:slave                                          ; modbus_slave              ; work         ;
+;       |uart_rx:master_uart_rx|                ; 12 (12)             ; 25 (25)                   ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|modbus_top_level:modbus|uart_rx:master_uart_rx                                      ; uart_rx                   ; work         ;
+;       |uart_rx:slave_uart_rx|                 ; 12 (12)             ; 25 (25)                   ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|modbus_top_level:modbus|uart_rx:slave_uart_rx                                       ; uart_rx                   ; work         ;
+;       |uart_tx:master_uart_tx|                ; 52 (52)             ; 18 (18)                   ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|modbus_top_level:modbus|uart_tx:master_uart_tx                                      ; uart_tx                   ; work         ;
+;       |uart_tx:slave_uart_tx|                 ; 94 (94)             ; 18 (18)                   ; 0                 ; 0          ; 0    ; 0            ; |de10_standard_modbus_demo|modbus_top_level:modbus|uart_tx:slave_uart_tx                                       ; uart_tx                   ; work         ;
++-----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------+---------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+

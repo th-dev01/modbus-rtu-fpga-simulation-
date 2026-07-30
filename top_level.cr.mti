@@ -1,0 +1,57 @@
+C:/Users/eduar/Downloads/modbus-rtu-fpga-simulation--top-level/modbus-rtu-fpga-simulation--top-level/modbus_crc_pkg.sv {1 {vlog -work work -sv -stats=none C:/Users/eduar/Downloads/modbus-rtu-fpga-simulation--top-level/modbus-rtu-fpga-simulation--top-level/modbus_crc_pkg.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling package modbus_crc_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/eduar/Downloads/modbus-rtu-fpga-simulation--top-level/modbus-rtu-fpga-simulation--top-level/modbus_top_level.sv {1 {vlog -work work -sv -stats=none C:/Users/eduar/Downloads/modbus-rtu-fpga-simulation--top-level/modbus-rtu-fpga-simulation--top-level/modbus_top_level.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling package modbus_top_level_sv_unit
+-- Importing package modbus_defs_pkg
+-- Compiling module modbus_top_level
+
+Top level modules:
+	modbus_top_level
+
+} {} {}} C:/Users/eduar/Downloads/modbus-rtu-fpga-simulation--top-level/modbus-rtu-fpga-simulation--top-level/tb_modbus_master_fsm.sv {1 {vlog -work work -sv -stats=none C:/Users/eduar/Downloads/modbus-rtu-fpga-simulation--top-level/modbus-rtu-fpga-simulation--top-level/tb_modbus_master_fsm.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling package tb_modbus_master_fsm_sv_unit
+-- Importing package modbus_crc_pkg
+-- Importing package modbus_defs_pkg
+-- Compiling module tb_modbus_master_fsm
+
+Top level modules:
+	tb_modbus_master_fsm
+
+} {} {}} C:/Users/eduar/Downloads/modbus-rtu-fpga-simulation--top-level/modbus-rtu-fpga-simulation--top-level/modbus_defs_pkg.sv {1 {vlog -work work -sv -stats=none C:/Users/eduar/Downloads/modbus-rtu-fpga-simulation--top-level/modbus-rtu-fpga-simulation--top-level/modbus_defs_pkg.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling package modbus_defs_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} C:/Users/eduar/Downloads/modbus-rtu-fpga-simulation--top-level/modbus-rtu-fpga-simulation--top-level/modbus_crc16.sv {1 {vlog -work work -sv -stats=none C:/Users/eduar/Downloads/modbus-rtu-fpga-simulation--top-level/modbus-rtu-fpga-simulation--top-level/modbus_crc16.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module modbus_crc16
+
+Top level modules:
+	modbus_crc16
+
+} {} {}} C:/Users/eduar/Downloads/modbus-rtu-fpga-simulation--top-level/modbus-rtu-fpga-simulation--top-level/master_frame_builder.sv {1 {vlog -work work -sv -stats=none C:/Users/eduar/Downloads/modbus-rtu-fpga-simulation--top-level/modbus-rtu-fpga-simulation--top-level/master_frame_builder.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling package master_frame_builder_sv_unit
+-- Importing package modbus_crc_pkg
+-- Compiling module master_frame_builder
+
+Top level modules:
+	master_frame_builder
+
+} {} {}} C:/Users/eduar/Downloads/modbus-rtu-fpga-simulation--top-level/modbus-rtu-fpga-simulation--top-level/modbus_register_file.sv {1 {vlog -work work -sv -stats=none C:/Users/eduar/Downloads/modbus-rtu-fpga-simulation--top-level/modbus-rtu-fpga-simulation--top-level/modbus_register_file.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module modbus_register_file
+
+Top level modules:
+	modbus_register_file
+
+} {} {}}

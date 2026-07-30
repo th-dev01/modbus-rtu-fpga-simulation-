@@ -1,0 +1,5 @@
+BEGIN 1:modbus_master_fsm:fast:work_verify
+    response_crc :  1:tb_modbus_top_level:fast:work_verify
+    response_length :  1:tb_modbus_top_level:fast:work_verify
+    response_buffer :  1:tb_modbus_top_level:fast:work_verify
+END 
